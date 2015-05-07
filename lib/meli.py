@@ -12,7 +12,8 @@ install_aliases()
 
 class Meli(object):
 
-    def __init__(self, client_id, client_secret, access_token=None, refresh_token=None):
+    def __init__(self, client_id, client_secret, access_token=None,
+                 refresh_token=None):
         self.client_id = client_id
         self.client_secret = client_secret
         self.access_token = access_token
@@ -34,8 +35,10 @@ class Meli(object):
         return url
 
     def authorize(self, code, redirect_URI):
-        params = {'grant_type': 'authorization_code', 'client_id': self.client_id,
-                  'client_secret': self.client_secret, 'code': code, 'redirect_uri': redirect_URI}
+        params = {'grant_type': 'authorization_code',
+                  'client_id': self.client_id,
+                  'client_secret': self.client_secret,
+                  'code': code, 'redirect_uri': redirect_URI}
         headers = {'Accept': 'application/json', 'User-Agent':
                    self.SDK_VERSION, 'Content-type': 'application/json'}
         uri = self.make_path(self.OAUTH_URL)
@@ -60,8 +63,10 @@ class Meli(object):
 
     def get_refresh_token(self):
         if self.refresh_token:
-            params = {'grant_type': 'refresh_token', 'client_id': self.client_id,
-                      'client_secret': self.client_secret, 'refresh_token': self.refresh_token}
+            params = {'grant_type': 'refresh_token',
+                      'client_id': self.client_id,
+                      'client_secret': self.client_secret,
+                      'refresh_token': self.refresh_token}
             headers = {'Accept': 'application/json', 'User-Agent':
                        self.SDK_VERSION, 'Content-type': 'application/json'}
             uri = self.make_path(self.OAUTH_URL)
