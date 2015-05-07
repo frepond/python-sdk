@@ -1,7 +1,5 @@
 from future.standard_library import install_aliases
-from urllib.parse import urlparse, urlencode
-from urllib.request import urlopen, Request
-from urllib.error import HTTPError
+from urllib.parse import urlencode
 import re
 import os
 import requests
@@ -14,8 +12,7 @@ install_aliases()
 
 class Meli(object):
 
-    def __init__(self, client_id, client_secret, access_token=None, 
-        refresh_token=None):
+    def __init__(self, client_id, client_secret, access_token=None, refresh_token=None):
         self.client_id = client_id
         self.client_secret = client_secret
         self.access_token = access_token
